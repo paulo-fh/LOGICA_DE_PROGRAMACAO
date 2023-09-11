@@ -3,8 +3,8 @@
 #define  DIM  3
 
 /*=================== FUNCTIONS PROTOTYPE ===================*/
-char inic(char s[][DIM]); 
-char jogo(char s[][DIM]);
+char inic(char s[][DIM]);                 /*Inicia todos os elementos da matriz com espaço*/
+char jogo(char s[][DIM]);				  /*Imprime o tabuleiro do jogo na tela*/
 
 /*====================== MAIN FUNCTION ======================*/
 main()
@@ -17,7 +17,7 @@ main()
 		
 	while(1)
 	{
-		jogo(velha);
+		jogo(velha);                 //Imprime o jogo em branco
 		
 		printf("\n\nLinha: ");
 		scanf("%d",&lin);
@@ -25,12 +25,12 @@ main()
 		scanf("%d",&col);
 		putchar('\n');
 		
-		lin--;
-		col--;
+		lin--;	col--;             //Decrementa, já que inicia no índice 0
 		
-		if(velha[lin][col]==' ')
+		if(velha[lin][col]==' ')   //Se a linha e a coluna digitada estiver vazia
 		{
-			velha[lin][col] = ch = (ch=='0') ? 'X' : '0';
+			velha[lin][col] = ch = (ch=='0') ? 'X' : '0';          //linha e coluna recebem ch (se ch estiver '0', recebe 'X', caso contrário recebe '0')
+																   //OBS.: ch foi iniciado com '0' na declaração da variável
 			
 			if( (velha[0][0]=='X' && velha[0][1]=='X' && velha[0][2]=='X') || 
 				(velha[1][0]=='X' && velha[1][1]=='X' && velha[1][2]=='X') ||
@@ -42,7 +42,7 @@ main()
 				(velha[0][2]=='X' && velha[1][2]=='X' && velha[2][2]=='X')  )
 			{
 				system("cls");
-				printf("Jogados X venceu\n\n");
+				printf("\n\tJogador 'X' venceu\n\n");
 				break;
 			}
 			else
@@ -56,7 +56,7 @@ main()
 				(velha[0][2]=='0' && velha[1][2]=='0' && velha[2][2]=='0') )
 			{
 				system("cls");
-				printf("Jogados 0 venceu\n\n");
+				printf("\n\tJogador '0' venceu\n\n");
 				break;
 			}
 			
@@ -66,21 +66,28 @@ main()
 		else
 		{
 			system("cls");
-			printf("Posicao j\xa0 ocupada\nJogue novamente!!!\n\n");
-		}			
+			printf("\n\tPosicao j\xa0 ocupada\nJogue novamente!!!\n\n");
+		}
+					
 		if(n_jogadas==DIM*DIM)
+		{
+			puts("\n\tSEM VENCEDOR.\n");
 			break;
+		}
+			
 	}
 			
 	jogo(velha);
 			
-	printf("\n\nFIM DO JOGO!!!\n\n");
+	puts("\n\n\tFIM DO JOGO!!!\n\n");
 		
 	system("PAUSE");
 	return 0;
 }
 
 /*=================== DEVELOPMENT OF FUNCTIONS ===================*/
+
+/*Inicia todos os elementos da matriz com espaço*/
 char inic(char s[][DIM])
 {
 	int i, j;
@@ -89,6 +96,7 @@ char inic(char s[][DIM])
 			s[i][j] = ' ';			
 }
 
+/*Imprime o tabuleiro do jogo na tela*/
 char jogo(char s[][DIM])
 {
 	int i, j;
