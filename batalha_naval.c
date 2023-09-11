@@ -7,7 +7,7 @@ void naval(char b[][10]);          /*Function to draw the matrix*/
 void new_seed();                   /*Function to generate randon numbers*/
 unsigned map_col(char col);        /*convert letter column to number column*/
 
-/*======================= MAIN FUNCTION =======================*/
+/*======================== MAIN FUNCTION ========================*/
 main()
 {
 	char boats[8][10] = {0},   //starts all elements with 0 (zero)
